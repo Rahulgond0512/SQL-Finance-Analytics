@@ -40,11 +40,11 @@ The report includes:
 * Gross Price Per Item
 * Total Gross Price
 
-📄 [View SQL Query](./sql_queries/Q.1_product_sales_of_croma_india.sql)
+📄 [View SQL Query](./sql_queries/Product_sales_of_croma_india.sql)
 
 📸 Result Screenshot:
 
-![Task 1 Result](./screenshots/Ans.1_Product_sales_of_Croma_India.png)
+![Task 1 Result](./screenshots/Product_sales_of_Croma_India.png)
 
 💡 Insights:
 - Helped analyze monthly product sales trends.
@@ -56,11 +56,11 @@ The report includes:
 
 Generated individual product sales reports for **Croma India** customer specifically for **Quarter 4 of FY-2021**.
 
-📄 [View SQL Query](sql_queries/Q.2 product sales for croma for fiscal_year_quarter.sql)
+📄 [View SQL Query](sql_queries/Product_sales_for_croma_for_fiscal_year_quarter.sql)
 
 📸 Result Screenshot:
 
-![Task 2 Result](screenshots/Ans.2 Product sales for croma fy Q4.png)
+![Task 2 Result](screenshots/Product_sales_for_croma_fy_Q4.png)
 
 💡 Insights:
 - Identified quarter-specific sales performance.
@@ -77,11 +77,11 @@ The report includes:
 * Month
 * Total Gross Sales Amount
 
-📄 [View SQL Query](sql_queries/Q.3 Monthly gross sales report for Croma.sql)
+📄 [View SQL Query](sql_queries/Monthly_gross_sales_report_for_Croma.sql)
 
 📸 Result Screenshot:
 
-![Task 3 Result](screenshots/Ans.3 Monthly gross sales for croma.png)
+![Task 3 Result](screenshots/Monthly_gross_sales_for_croma.png)
 
 💡 Insights:
 - Helped monitor monthly revenue trends.
@@ -98,11 +98,11 @@ The report includes:
 * Fiscal Year
 * Total Gross Sales Amount
 
-📄 [View SQL Query](sql_queries/Q.4 yearly sales report for croma.sql)
+📄 [View SQL Query](sql_queries/Yearly_sales_report_for_croma.sql)
 
 📸 Result Screenshot:
 
-![Task 4 Result](screenshots/Ans.4 Yearly sales report for Croma.png)
+![Task 4 Result](screenshots/Yearly_sales_report_for_Croma.png)
 
 💡 Insights:
 - Enabled yearly sales comparison.
@@ -128,7 +128,7 @@ Built a Stored Procedure to classify markets based on total sold quantity.
 
 * Market Badge
 
-⚙ [View stored_procedures](market badge stored procedures.sql)
+⚙ [View stored_procedures](market_badge_stored_procedures.sql)
 
 💡 Insights:
 - Classified markets based on sales quantity.
@@ -145,19 +145,19 @@ Generated analytical reports for:
 * Top Customers by Net Sales
 for a given financial year.
 
-📄 [View SQL Query](sql_queries/Q.6 Top 3 product,market,customer.sql)
+📄 [View SQL Query](sql_queries/Top_3_product,market,customer.sql)
 
 📸 Top Market Screenshot:
 
-![Top Market](screenshots/Ans.6.1 Top market.png)
+![Top Market](screenshots/Top_market.png)
 
 📸 Top Customer Screenshot:
 
-![Top Customer](screenshots/Ans.6.2 Top customer by net sales.png)
+![Top Customer](screenshots/Top_customer_by_net_sales.png)
 
 📸 Top Product Screenshot:
 
-![Top Product](screenshots/Ans.6.3 Top product by net sales.png)
+![Top Product](screenshots/Top_product_by_net_sales.png)
 
 💡 Insights:
 - Identified top-performing business areas.
@@ -169,11 +169,11 @@ for a given financial year.
 
 Created a report for **Top 10 Markets by Percentage Net Sales Contribution** for FY-2021.
 
-📄 [View SQL Query](sql_queries/Q.7 top 10 markets by % net sales.sql)
+📄 [View SQL Query](sql_queries/Top_10_markets_by_%_net_sales.sql)
 
 📸 Result Screenshot:
 
-![Task 7 Result](screenshots/Ans.7 Top 10 market by % net sales.png)
+![Task 7 Result](screenshots/Top_10_market_by_%_net_sales.png)
 
 💡 Insights:
 - Identified high revenue generating markets.
@@ -190,11 +190,11 @@ Implemented advanced analytical calculations using:
 * `SUM() OVER()`
 * `Custom SQL views : net_sales views`
 
-📄 [View SQL Query](sql_queries/Q.8 Net Sales Contribution.sql)
+📄 [View SQL Query](sql_queries/Net_Sales_Contribution.sql)
 
 📸 Result Screenshot:
 
-![Task 8 Result](screenshots/Ans.8 Net sales contribution.png)
+![Task 8 Result](screenshots/Net_sales_contribution.png)
 
 💡 Insights:
 - Analyzed contribution share across segments.
@@ -210,11 +210,11 @@ Implemented advanced analytical calculations using:
 - `Custom SQL views : net_sales views`
 - `CTEs`
 
-📄 [View SQL Query](sql_queries/Q.9 net sales by customer and region.sql)
+📄 [View SQL Query](sql_queries/Net_sales_by_customer_and_region.sql)
 
 📸 Result Screenshot:
 
-![Task 9 Result](screenshots/Ans.9 Net sales by customer , region.png)
+![Task 9 Result](screenshots/Net_sales_by_customer_,_region.png)
 
 💡 Insights:
 - Compared customer performance across regions.
@@ -228,11 +228,11 @@ Implemented advanced analytical calculations using:
 - `DENSE_RANK() OVER(PARTITION BY division)`
 - `CTEs`
 
-📄 [View SQL Query](sql_queries/Q.10 top 3 products in each division by their quantity sold.sql)
+📄 [View SQL Query](sql_queries/Top_3_products_in_each_division_by_their_quantity_sold.sql)
 
 📸 Result Screenshot:
 
-![Task 10 Result](screenshots/Ans.10 Top 3 product in each division by their qty.png)
+![Task 10 Result](screenshots/Top_3_product_in_each_division_by_their_qty.png)
 
 💡 Insights:
 - Ranked top-performing products within each division.
