@@ -214,7 +214,7 @@ Implemented advanced analytical calculations using:
 
 📸 Result Screenshot:
 
-![Task 9 Result](screenshots/Net_sales_by_customer_,_region.png)
+![Task 9 Result](screenshots/Net_sales_by_customer_and_region.png)
 
 💡 Insights:
 - Compared customer performance across regions.
