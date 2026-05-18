@@ -8,6 +8,21 @@ The project simulates business requirements given by product owners and converts
 
 The objective of this project is to demonstrate practical SQL skills used in real-world data analytics and business intelligence environments.
 
+
+# 📂 Recommended GitHub Folder Structure
+
+```bash
+MYSQL-SALES-ANALYTICS/
+│
+├── Dataset/
+├── Functions/
+├── Screenshots/
+├── SQL Queries/
+├── Stored Procedures/
+├── Views/
+└── README.md
+```
+
 ---
 
 # 🚀 Business Problems Solved
@@ -25,7 +40,15 @@ The report includes:
 * Gross Price Per Item
 * Total Gross Price
 
-This report helps track product-level sales performance and supports further analytics in Excel.
+📄 [View SQL Query](./sql_queries/Q.1_product_sales_of_croma_india.sql)
+
+📸 Result Screenshot:
+
+![Task 1 Result](./screenshots/Ans.1_Product_sales_of_Croma_India.png)
+
+💡 Insights:
+- Helped analyze monthly product sales trends.
+- Supported product-level performance tracking.
 
 ---
 
@@ -33,7 +56,15 @@ This report helps track product-level sales performance and supports further ana
 
 Generated individual product sales reports for **Croma India** customer specifically for **Quarter 4 of FY-2021**.
 
-This analysis helps identify quarter-specific product performance trends.
+📄 [View SQL Query](sql_queries/Q.2 product sales for croma for fiscal_year_quarter.sql)
+
+📸 Result Screenshot:
+
+![Task 2 Result](screenshots/Ans.2 Product sales for croma fy Q4.png)
+
+💡 Insights:
+- Identified quarter-specific sales performance.
+- Helped compare seasonal product demand.
 
 ---
 
@@ -46,7 +77,15 @@ The report includes:
 * Month
 * Total Gross Sales Amount
 
-This helps business teams monitor customer relationships and revenue generation.
+📄 [View SQL Query](sql_queries/Q.3 Monthly gross sales report for Croma.sql)
+
+📸 Result Screenshot:
+
+![Task 3 Result](screenshots/Ans.3 Monthly gross sales for croma.png)
+
+💡 Insights:
+- Helped monitor monthly revenue trends.
+- Improved financial performance tracking.
 
 ---
 
@@ -59,7 +98,15 @@ The report includes:
 * Fiscal Year
 * Total Gross Sales Amount
 
-This analysis supports yearly financial performance tracking.
+📄 [View SQL Query](sql_queries/Q.4 yearly sales report for croma.sql)
+
+📸 Result Screenshot:
+
+![Task 4 Result](screenshots/Ans.4 Yearly sales report for Croma.png)
+
+💡 Insights:
+- Enabled yearly sales comparison.
+- Helped track business growth across fiscal years.
 
 ---
 
@@ -81,7 +128,11 @@ Built a Stored Procedure to classify markets based on total sold quantity.
 
 * Market Badge
 
-This automation improves market segmentation and reporting efficiency.
+⚙ [View stored_procedures](market badge stored procedures.sql)
+
+💡 Insights:
+- Classified markets based on sales quantity.
+- Improved market segmentation analysis.
 
 ---
 
@@ -92,10 +143,25 @@ Generated analytical reports for:
 * Top Markets by Net Sales
 * Top Products by Net Sales
 * Top Customers by Net Sales
-
 for a given financial year.
 
-These reports provide a holistic view of financial performance and support business decision-making.
+📄 [View SQL Query](sql_queries/Q.6 Top 3 product,market,customer.sql)
+
+📸 Top Market Screenshot:
+
+![Top Market](screenshots/Ans.6.1 Top market.png)
+
+📸 Top Customer Screenshot:
+
+![Top Customer](screenshots/Ans.6.2 Top customer by net sales.png)
+
+📸 Top Product Screenshot:
+
+![Top Product](screenshots/Ans.6.3 Top product by net sales.png)
+
+💡 Insights:
+- Identified top-performing business areas.
+- Helped understand customer and product contribution.
 
 ---
 
@@ -103,7 +169,15 @@ These reports provide a holistic view of financial performance and support busin
 
 Created a report for **Top 10 Markets by Percentage Net Sales Contribution** for FY-2021.
 
-This analysis helps identify the most revenue-contributing markets globally.
+📄 [View SQL Query](sql_queries/Q.7 top 10 markets by % net sales.sql)
+
+📸 Result Screenshot:
+
+![Task 7 Result](screenshots/Ans.7 Top 10 market by % net sales.png)
+
+💡 Insights:
+- Identified high revenue generating markets.
+- Supported market performance comparison.
 
 ---
 
@@ -114,26 +188,56 @@ Used SQL Window Functions to calculate net sales contribution percentages across
 Implemented advanced analytical calculations using:
 
 * `SUM() OVER()`
-* Partitioning techniques
+* `Custom SQL views : net_sales views`
+
+📄 [View SQL Query](sql_queries/Q.8 Net Sales Contribution.sql)
+
+📸 Result Screenshot:
+
+![Task 8 Result](screenshots/Ans.8 Net sales contribution.png)
+
+💡 Insights:
+- Analyzed contribution share across segments.
+- Helped understand overall revenue distribution.
+- Simplified complex calculation using SQL Views and Windows Functions.
 
 ---
 
 ## ✅ TASK 9 — Customer & Regional Sales Analysis
 
-Analyzed:
+Implemented advanced analytical calculations using:
+- `SUM() OVER(PARTITION BY region)`
+- `Custom SQL views : net_sales views`
+- `CTEs`
 
-* Customer-wise Net Sales
-* Region-wise Sales Contribution
+📄 [View SQL Query](sql_queries/Q.9 net sales by customer and region.sql)
 
-This report helps compare performance across customers and regions.
+📸 Result Screenshot:
+
+![Task 9 Result](screenshots/Ans.9 Net sales by customer , region.png)
+
+💡 Insights:
+- Compared customer performance across regions.
+- Helped identify strong regional markets.
 
 ---
 
 ## ✅ TASK 10 — Top Products by Division
 
-Used `DENSE_RANK()` Window Function to identify top-performing products in each division based on quantity sold.
+Implemented advanced analytical calculations using:
+- `DENSE_RANK() OVER(PARTITION BY division)`
+- `CTEs`
 
-This analysis supports division-level product performance evaluation.
+📄 [View SQL Query](sql_queries/Q.10 top 3 products in each division by their quantity sold.sql)
+
+📸 Result Screenshot:
+
+![Task 10 Result](screenshots/Ans.10 Top 3 product in each division by their qty.png)
+
+💡 Insights:
+- Ranked top-performing products within each division.
+- Identified highest quantity-selling products for FY-2021.
+- Simplified ranking analysis using Window Functions.
 
 ---
 
