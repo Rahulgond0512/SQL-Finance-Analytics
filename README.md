@@ -183,6 +183,7 @@ Built a Stored Procedure to classify markets based on total sold quantity.
 
 * Market Badge
 
+### Stored Procedure Creation
 ```sql
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_market_badge`(
 in in_market varchar(45),
@@ -212,6 +213,13 @@ else
   end if;
 END
 ```
+### Procedure Execution
+```sql
+set @out_badge = '0';
+call gdb0041.get_market_badge('India', 2021, @out_badge);
+select @out_badge;
+```
+![Task 5 Result](screenshots/market_badge.png)
 
 💡 Insights:
 - Classified markets based on sales quantity.
@@ -285,7 +293,7 @@ limit 5;
 
 ## ✅ TASK 7 — Net Sales Percentage Share Analysis
 
-Created a report for **Top 10 Markets by Percentage Net Sales Contribution** for FY-2021.
+Created a report for **Top 10 Customer by Percentage Net Sales Contribution** for FY-2021.
 ```sql
 with cte1 as (
 select 
@@ -306,7 +314,7 @@ order by net_sales_mln desc;
 
 📸 Result Screenshot:
 
-![Task 7 Result](screenshots/Top_10_market_by_%_net_sales.png)
+![Task 7 Result](screenshots/Top_10_market_by_pct_net_sales.png)
 
 💡 Insights:
 - Identified high revenue generating markets.
