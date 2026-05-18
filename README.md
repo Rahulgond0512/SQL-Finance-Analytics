@@ -1,10 +1,10 @@
-# 📊 AtliQ Hardware Sales & Finance Analytics using MySQL
+# 📊 AtliQ Hardware Sales Analytics using MySQL
 
 ## 📌 Project Overview
 
 This project focuses on solving real-world business analytics problems using MySQL for AtliQ Hardware.
 
-The project simulates business requirements given by product owners and converts them into SQL-based analytical reports. It covers sales analysis, financial reporting, market performance tracking, and advanced SQL reporting workflows using real business scenarios.
+The project simulates business requirements given by product owners and converts them into SQL-based analytical reports. It covers sales analysis, customer performance tracking, market analysis, and advanced SQL reporting workflows using real business scenarios.
 
 The objective of this project is to demonstrate practical SQL skills used in real-world data analytics and business intelligence environments.
 
@@ -474,7 +474,7 @@ Through this project, I gained hands-on experience in:
 
 * Advanced SQL Query Writing
 * Business Analytics
-* Financial Reporting
+* Sales Reporting
 * Window Functions
 * Stored Procedures
 * CTEs & Views
