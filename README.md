@@ -40,7 +40,23 @@ The report includes:
 * Gross Price Per Item
 * Total Gross Price
 
-📄 [View SQL Query](./sql_queries/Product_sales_of_croma_india.sql)
+```sql
+select
+    s.date, s.product_code,
+    p.product,p.variant,
+    s.sold_quantity, g.gross_price as gross_price_per_item,
+    round(s.sold_quantity*g.gross_price,2) as gross_price_total
+from fact_sales_monthly s
+join dim_product p
+on p.product_code=s.product_code
+join fact_gross_price g
+on g.fiscal_year=get_fiscal_year(s.date)
+and g.product_code=s.product_code
+where customer_code=90002002 and
+get_fiscal_year(date)=2021
+order by date desc
+limit 1000000;
+```
 
 📸 Result Screenshot:
 
@@ -55,8 +71,24 @@ The report includes:
 ## ✅ TASK 2 — Quarter-wise Product Sales Analysis
 
 Generated individual product sales reports for **Croma India** customer specifically for **Quarter 4 of FY-2021**.
-
-📄 [View SQL Query](sql_queries/Product_sales_for_croma_for_fiscal_year_quarter.sql)
+```sql
+select
+  s.date, s.product_code,
+  p.product,p.variant,
+  s.sold_quantity, gp.gross_price,
+  round(s.sold_quantity*gp.gross_price,2) as gross_sales_price
+from fact_sales_monthly s
+join dim_product p
+on p.product_code=s.product_code
+join fact_gross_price gp
+on gp.fiscal_year=get_fiscal_year(s.date)
+and gp.product_code=s.product_code
+where customer_code=90002002 and
+get_fiscal_year(date)=2021 and 
+get_fiscal_quarter(date)="Q4"
+order by date asc
+limit 1000000;
+```
 
 📸 Result Screenshot:
 
@@ -77,7 +109,19 @@ The report includes:
 * Month
 * Total Gross Sales Amount
 
-📄 [View SQL Query](sql_queries/Monthly_gross_sales_report_for_Croma.sql)
+```sql
+select 
+   s.date,
+   round(sum(g.gross_price*s.sold_quantity),2) as gross_price_total
+from fact_sales_monthly s
+join fact_gross_price g
+on 
+   g.product_code=s.product_code and
+   g.fiscal_year=get_fiscal_year(s.date)
+where customer_code=90002002
+group by s.date
+order by s.date asc;
+```
 
 📸 Result Screenshot:
 
@@ -97,8 +141,19 @@ The report includes:
 
 * Fiscal Year
 * Total Gross Sales Amount
-
-📄 [View SQL Query](sql_queries/Yearly_sales_report_for_croma.sql)
+```sql
+select 
+  get_fiscal_year(s.date) as fiscal_year,
+  round(sum(g.gross_price*s.sold_quantity),2) as yearly_sales
+from fact_sales_monthly s
+join fact_gross_price g
+on
+   g.product_code=s.product_code and
+   g.fiscal_year=get_fiscal_year(s.date)
+where customer_code=90002002
+group by get_fiscal_year(s.date)
+order by fiscal_year asc;
+```
 
 📸 Result Screenshot:
 
@@ -128,7 +183,35 @@ Built a Stored Procedure to classify markets based on total sold quantity.
 
 * Market Badge
 
-⚙ [View stored_procedures](market_badge_stored_procedures.sql)
+```sql
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_market_badge`(
+in in_market varchar(45),
+in in_fiscal_year year,
+out out_badge varchar(45)
+)
+BEGIN
+ declare qty int default 0;
+ # set default market to be India
+if in_market="" then
+set in_market="India";
+end if;
+ # retrieve total qty for a given market+fyear
+select
+ sum(sold_quantity) into qty
+from fact_sales_monthly s
+join dim_customer c
+on c.customer_code=s.customer_code
+where get_fiscal_year(s.date)=2021 and 
+c.market=in_market
+group by c.market;
+# determine market badge
+if qty >5000000 then
+  set out_badge="Gold";
+else 
+  set out_badge="Silver";
+  end if;
+END
+```
 
 💡 Insights:
 - Classified markets based on sales quantity.
@@ -145,16 +228,51 @@ Generated analytical reports for:
 * Top Customers by Net Sales
 for a given financial year.
 
-📄 [View SQL Query](sql_queries/Top_3_product,market,customer.sql)
+# Report for top markets
+```sql
+select 
+   market,
+   round(sum(net_sales)/1000000,2) as net_sales_mln
+from net_sales                                #net_sales selected from views
+where fiscal_year=2021
+group by market
+order by net_sales_mln desc
+limit 5;
+```
 
 📸 Top Market Screenshot:
 
 ![Top Market](screenshots/Top_market.png)
 
+# Report for top customers
+```sql
+select 
+   c.customer,
+   round(sum(net_sales)/1000000,2) as net_sales_mln
+from net_sales ns                      # net_sales selected from views
+join dim_customer c
+on c.customer_code=ns.customer_code
+where fiscal_year=2021
+group by c.customer
+order by net_sales_mln desc
+limit 5;
+```
+
 📸 Top Customer Screenshot:
 
 ![Top Customer](screenshots/Top_customer_by_net_sales.png)
 
+# Report for top products
+```sql
+SELECT
+ product,
+ round(sum(net_sales)/1000000,2) as net_sales_mln
+FROM net_sales                              # net_sales selected from views
+where fiscal_year=2021
+group by product 
+order by net_sales_mln desc
+limit 5;
+```
 📸 Top Product Screenshot:
 
 ![Top Product](screenshots/Top_product_by_net_sales.png)
@@ -168,8 +286,23 @@ for a given financial year.
 ## ✅ TASK 7 — Net Sales Percentage Share Analysis
 
 Created a report for **Top 10 Markets by Percentage Net Sales Contribution** for FY-2021.
+```sql
+with cte1 as (
+select 
+   c.customer,
+   round(sum(net_sales)/1000000,2) as net_sales_mln
+from net_sales ns                      # net_sales selected from views
+join dim_customer c
+on c.customer_code=ns.customer_code
+where fiscal_year=2021
+group by c.customer)
+select 
+  *,
+  net_sales_mln*100/sum(net_sales_mln) over() as pct
+from cte1
+order by net_sales_mln desc;
+```
 
-📄 [View SQL Query](sql_queries/Top_10_markets_by_%_net_sales.sql)
 
 📸 Result Screenshot:
 
@@ -189,8 +322,22 @@ Implemented advanced analytical calculations using:
 
 * `SUM() OVER()`
 * `Custom SQL views : net_sales views`
-
-📄 [View SQL Query](sql_queries/Net_Sales_Contribution.sql)
+```sql
+with cte1 as (
+select 
+   c.customer,
+   round(sum(net_sales)/1000000,2) as net_sales_mln
+from net_sales ns                      # net_sales selected from views
+join dim_customer c
+on c.customer_code=ns.customer_code
+where fiscal_year=2021
+group by c.customer)
+select 
+  *,
+  net_sales_mln*100/sum(net_sales_mln) over() as pct
+from cte1
+order by net_sales_mln desc;
+```
 
 📸 Result Screenshot:
 
@@ -209,8 +356,23 @@ Implemented advanced analytical calculations using:
 - `SUM() OVER(PARTITION BY region)`
 - `Custom SQL views : net_sales views`
 - `CTEs`
-
-📄 [View SQL Query](sql_queries/Net_sales_by_customer_and_region.sql)
+```sql
+with cte1 as (
+select 
+  c.customer,
+  c.region,
+  round(sum(net_sales)/1000000,2) as net_sales_mln
+from net_sales s
+join dim_customer c
+on c.customer_code=s.customer_code
+where s.fiscal_year=2021
+group by customer,region)
+select 
+  *,
+  net_sales_mln*100/sum(net_sales_mln) over(partition by region) as pct
+from cte1
+order by region,net_sales_mln desc;
+```  
 
 📸 Result Screenshot:
 
@@ -227,8 +389,24 @@ Implemented advanced analytical calculations using:
 Implemented advanced analytical calculations using:
 - `DENSE_RANK() OVER(PARTITION BY division)`
 - `CTEs`
-
-📄 [View SQL Query](sql_queries/Top_3_products_in_each_division_by_their_quantity_sold.sql)
+```sql
+with cte1 as (
+select
+  p.division,
+  p.product,
+  sum(sold_quantity) as total_qty
+from fact_sales_monthly s
+join dim_product p
+using (product_code)
+where fiscal_year=2021
+group by p.product ),
+cte2 as (
+select 
+*,
+dense_rank() over(partition by division order by total_qty desc) as drnk
+from cte1)
+select * from cte2 where drnk<=3;
+```
 
 📸 Result Screenshot:
 
