@@ -8,21 +8,6 @@ The project simulates business requirements given by product owners and converts
 
 The objective of this project is to demonstrate practical SQL skills used in real-world data analytics and business intelligence environments.
 
-
-# 📂 Recommended GitHub Folder Structure
-
-```bash
-MYSQL-SALES-ANALYTICS/
-│
-├── Dataset/
-├── Functions/
-├── Screenshots/
-├── SQL Queries/
-├── Stored Procedures/
-├── Views/
-└── README.md
-```
-
 ---
 
 # 🚀 Business Problems Solved
@@ -429,21 +414,14 @@ select * from cte2 where drnk<=3;
 
 # 🛠 SQL Concepts Used
 
-* SELECT Statements
 * Joins
-* Aggregate Functions
-* GROUP BY
-* ORDER BY
 * Common Table Expressions (CTEs)
 * Window Functions
 * Views
 * Stored Procedures
-* User Defined Functions
 * Fiscal Year Functions
-* CASE Statements
 * Ranking Functions
-* Data Aggregation
-* Business Reporting Queries
+* Aggregate Functions
 
 ---
 
